@@ -4,7 +4,7 @@ import {
 import axios from 'axios';
 
 export const getContacts=()=>async(dispatch)=>{
-    const res=await axios.get('https://localhost:8000/contacts');
+    const res=await axios.get('https://express-contact-api.herokuapp.com/contacts');
     dispatch(
         {
             type:GET_CONTACTS,
@@ -13,7 +13,7 @@ export const getContacts=()=>async(dispatch)=>{
     )
 }
 export const getContact=(id)=>async(dispatch)=>{
-    const res=await axios.get(`https://localhost:8000/contacts/${id}`);
+    const res=await axios.get(`https://express-contact-api.herokuapp.com/contacts/${id}`);
     dispatch(
         {
             type:GET_CONTACT,
@@ -22,7 +22,7 @@ export const getContact=(id)=>async(dispatch)=>{
     )
 }
 export const deleteContact=(id)=>async(dispatch)=>{
-    await axios.delete(`https://localhost:8000/contacts/delete/${id}`);
+    await axios.delete(`https://express-contact-api.herokuapp.com/contacts/delete/${id}`);
     dispatch(
         {
             type:DELETE_CONTACT,
@@ -31,7 +31,7 @@ export const deleteContact=(id)=>async(dispatch)=>{
     )
 }
 export const addContact=(contact)=>async(dispatch)=>{
-    const res=await axios.post(`https://localhost:8000/contacts/add`,contact);
+    const res=await axios.post(`https://express-contact-api.herokuapp.com/contacts/add`,contact);
     //console.log(res.data);
     dispatch(
         {
@@ -41,7 +41,7 @@ export const addContact=(contact)=>async(dispatch)=>{
     )
 }
 export const editContact=(contact)=>async(dispatch)=>{
-    const res=await axios.put(`https://localhost:8000/contacts/edit/${contact.id}`,contact);
+    const res=await axios.put(`https://express-contact-api.herokuapp.com/contacts/edit/${contact.id}`,contact);
     //console.log(res.data);
     dispatch(
         {
