@@ -3,7 +3,8 @@ import {
 } from '../actions/types';
 
 const initialState={
-    contacts:[]
+    contacts:[],
+    editContact:{}
 }
 
 export default function reducer(state=initialState,action){
@@ -15,11 +16,11 @@ export default function reducer(state=initialState,action){
         case ADD_CONTACT:
             return {...state,contacts:[action.payload,...state.contacts]};
         case EDIT_CONTACT:
-            return {...state,contacts:[...state.contacts.filter(contact=>
+            return {...state,contacts:[...state.contacts.map(contact=>
                 (contact.id===action.payload.id)?action.payload:contact
                 )]};
         case GET_CONTACT:
-            return {...state,contacts:action.payload}
+            return {...state,editContact:action.payload}
         default:
             return state;
     }

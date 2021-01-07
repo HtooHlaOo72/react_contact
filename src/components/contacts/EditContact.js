@@ -14,13 +14,17 @@ class EditContact extends Component {
             phone: ''
         }
     };
-    componentDidMount(){
+    async componentDidMount(){
         const {id}=this.props.match.params;
-        this.props.getContact(id);
+        await this.props.getContact(id);
         const {name,email,phone}=this.props.contacts;
-        console.log(this.props.contacts)
+        this.setState({
+            name,email,phone
+        })
+        
+        
     }
-    onSubmit = (e) => {
+    onSubmit =(e) => {
         e.preventDefault();
         const { name, email, phone, error } = this.state;
         this.setState({
@@ -54,6 +58,16 @@ class EditContact extends Component {
         if(!error.name&&!error.email&&!error.phone){
             const {id}=this.props.match.params;
             this.props.editContact({name,email,phone,id});
+            this.setState({
+                name: '',
+                email: '',
+                phone: '',
+                error: {
+                    name: '',
+                    email: '',
+                    phone: ''
+                }
+            });
             this.props.history.push('/');
         }
             
@@ -65,17 +79,17 @@ class EditContact extends Component {
 
     }
     onChange = (e) => {
-        console.log(e.target.name, e.target.value);
+       //console.log(e.target.name, e.target.value);
         this.setState({ ...this.state, [e.target.name]: e.target.value });
     }
     render() {
-        const { name, email, phone, error } = this.state;
+        const { name, email, phone } = this.state;
         return (
             <div>
                 <form onSubmit={this.onSubmit}>
-                    <SingleInput type='text' error={error} name="name" id='name' value={name} onChange={this.onChange} />
-                    <SingleInput type='email' error={error} name="email" id='email' value={email} onChange={this.onChange} />
-                    <SingleInput type='text' error={error} name="phone" id='phone' value={phone} onChange={this.onChange} />
+                    <SingleInput type='text'  name="name" id='name' value={name} onChange={this.onChange} />
+                    <SingleInput type='email'  name="email" id='email' value={email} onChange={this.onChange} />
+                    <SingleInput type='text'  name="phone" id='phone' value={phone} onChange={this.onChange} />
                     <button type="submit" className="btn btn-primary">UPDATE</button>
                 </form>
             </div>
@@ -83,7 +97,7 @@ class EditContact extends Component {
     }
 }
 const mapStateToProps=(state)=>({
-    contacts:state.contact.contacts
+    contacts:state.contact.editContact
 })
     
 

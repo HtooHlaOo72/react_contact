@@ -17,7 +17,7 @@ class AddContact extends Component {
 
     onSubmit = (e) => {
         e.preventDefault();
-        const { name, email, phone, error } = this.state;
+        const { name, email, phone,error } = this.state;
         this.setState({
             ...this.state, error: {
                 name: '',
@@ -59,11 +59,11 @@ class AddContact extends Component {
 
     }
     onChange = (e) => {
-        console.log(e.target.name, e.target.value);
+        //console.log(e.target.name, e.target.value);
         this.setState({ ...this.state, [e.target.name]: e.target.value });
     }
     render() {
-        const { name, email, phone, error } = this.state;
+        const { name, email, phone } = this.state;
         return (
             <div>
                 <form onSubmit={this.onSubmit}>
