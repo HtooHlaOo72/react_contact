@@ -19,9 +19,9 @@ export default class Header extends Component {
                 {
                     (this.state.showNav)
                     &&
-                    <div className="container-fluid justify-content-end py-4">
+                    <div className="container-fluid  py-4">
                         <ul className="navbar-nav text-left">
-                            <li className='nav-item '>
+                            <li className='nav-item'>
                                 <Link className="nav-link text-dark" to='/'>Home</Link>
                             </li>
                             <li className='nav-item '>
