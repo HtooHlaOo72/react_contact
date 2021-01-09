@@ -32,7 +32,7 @@ function Contact(props) {
                 <div className='col-sm-6 col-xs-12 d-flex justify-content-end'>
                     <span className="btn-dark rounded-pill mx-1 px-2 my-2" onClick={onShowMore}>More</span>
                     {/* <Link to={`/contact/edit/${props._id}`} className='btn-success rounded-pill mx-1 px-2'><span  >Edit</span></Link> */}
-                    <span className="btn-success rounded-pill mx-1 px-2 my-2" onClick={()=>onEditRedirect(props._id)}>Delete</span>
+                    <span className="btn-success rounded-pill mx-1 px-2 my-2" onClick={()=>onEditRedirect(props._id)}>Edit</span>
                     <span className="btn-danger rounded-pill mx-1 px-2 my-2" onClick={()=>onDelete(props._id)}>Delete</span>
                 </div>
             </div>
