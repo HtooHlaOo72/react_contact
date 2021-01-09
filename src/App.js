@@ -1,6 +1,5 @@
 import React from 'react';
-// import $ from 'jquery';
-// import Popper from 'popper.js';
+
 import Header from './components/Header';
 import {BrowserRouter as Router,Route,Switch} from 'react-router-dom';
 import Contacts from './components/contacts/Contacts';

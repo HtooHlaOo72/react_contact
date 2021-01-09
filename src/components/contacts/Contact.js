@@ -16,15 +16,17 @@ function Contact(props) {
     }
     return (
         
-        <div className='card'>
+        <div className='card my-2'>
             <div className="card-header">
-                <h3>
-                    {props.name}
-                    <span className="badge badge-pill badge-dark mx-5 " onClick={onShowMore}>More</span>
-                    <Link to={`/contact/edit/${props._id}`}><span className="badge badge-pill badge-success mx-3 float-right" >Edit</span></Link>
-                    <span className="badge badge-pill badge-danger mx-3 float-right" onClick={()=>onDelete(props._id)}>Delete</span>
-                </h3>
-                
+            <div className='row'>
+                <span className='col-6'>{props.name}</span>
+                <div className='col-6'>
+                    <span className="badge badge-pill badge-dark mx-1 " onClick={onShowMore}>More</span>
+                    <Link to={`/contact/edit/${props._id}`}><span className="badge badge-pill badge-success mx-1" >Edit</span></Link>
+                    <span className="badge badge-pill badge-danger mx-1 " onClick={()=>onDelete(props._id)}>Delete</span>
+                </div>
+            </div>
+                   
             </div>
             {
                 (showInfo)&&
