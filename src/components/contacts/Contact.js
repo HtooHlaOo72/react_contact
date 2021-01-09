@@ -10,8 +10,9 @@ function Contact(props) {
         setshowInfo(!showInfo);
     }
     
-    const onDelete=(id)=>{
-        props.deleteContact(id)
+    const onDelete=async (id)=>{
+        await props.deleteContact(id);
+        window.location.reload(false);
     }
     return (
         
@@ -20,8 +21,8 @@ function Contact(props) {
                 <h3>
                     {props.name}
                     <span className="badge badge-pill badge-dark mx-5 " onClick={onShowMore}>More</span>
-                    <Link to={`/contact/edit/${props.id}`}><span className="badge badge-pill badge-success mx-3 float-right" >Edit</span></Link>
-                    <span className="badge badge-pill badge-danger mx-3 float-right" onClick={()=>onDelete(props.id)}>Delete</span>
+                    <Link to={`/contact/edit/${props._id}`}><span className="badge badge-pill badge-success mx-3 float-right" >Edit</span></Link>
+                    <span className="badge badge-pill badge-danger mx-3 float-right" onClick={()=>onDelete(props._id)}>Delete</span>
                 </h3>
                 
             </div>

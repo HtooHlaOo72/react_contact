@@ -17,7 +17,7 @@ class EditContact extends Component {
     async componentDidMount(){
         const {id}=this.props.match.params;
         await this.props.getContact(id);
-        const {name,email,phone}=this.props.contacts;
+        const {name,email,phone}=await this.props.contacts;
         this.setState({
             name,email,phone
         })
@@ -57,7 +57,9 @@ class EditContact extends Component {
         
         if(!error.name&&!error.email&&!error.phone){
             const {id}=this.props.match.params;
-            this.props.editContact({name,email,phone,id});
+            //to delete after testing
+            console.log(name,email,phone,'before edit action');
+            this.props.editContact({name,email,phone,_id:id});
             this.setState({
                 name: '',
                 email: '',

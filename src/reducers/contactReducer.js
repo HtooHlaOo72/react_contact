@@ -12,13 +12,17 @@ export default function reducer(state=initialState,action){
         case GET_CONTACTS:
             return {...state,contacts:[...action.payload]};
         case DELETE_CONTACT:
-            return {...state,contacts:[...state.contacts.filter(contact=>contact.id!==action.payload)]};
+            return {...state,contacts:[...state.contacts.filter(contact=>contact._id!==action.payload)]};
         case ADD_CONTACT:
             return {...state,contacts:[action.payload,...state.contacts]};
         case EDIT_CONTACT:
-            return {...state,contacts:[...state.contacts.map(contact=>
-                (contact.id===action.payload.id)?action.payload:contact
-                )]};
+            return {
+                ...state,
+                contacts: state.contacts.map(contact=>
+                    (contact._id===action.payload._id)?action.payload:contact
+                    )
+                
+              };
         case GET_CONTACT:
             return {...state,editContact:action.payload}
         default:

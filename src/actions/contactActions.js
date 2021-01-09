@@ -41,8 +41,16 @@ export const addContact=(contact)=>async(dispatch)=>{
     )
 }
 export const editContact=(contact)=>async(dispatch)=>{
-    const res=await axios.put(`https://express-contact-api.herokuapp.com/contacts/edit/${contact.id}`,contact);
-    //console.log(res.data);
+    const {name,email,phone,_id}=await contact;
+    const res=await axios.put(`https://express-contact-api.herokuapp.com/contacts/edit/${contact._id}`,{
+
+        _id:_id,
+        name:name,
+        email:email,
+        phone:phone,
+
+    });
+    console.log(name,email,phone,_id,"edit action");
     dispatch(
         {
             type:EDIT_CONTACT,

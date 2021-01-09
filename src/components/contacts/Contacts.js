@@ -9,6 +9,7 @@ class Contacts extends Component {
     componentDidMount(){
         console.log("component did mount")
         this.props.getContacts();
+        
     }
     render() {
         const {contacts}=this.props;
