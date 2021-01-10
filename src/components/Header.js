@@ -4,20 +4,23 @@ import { Link } from 'react-router-dom';
 
 
 export default class Header extends Component {
-    state = { showNav: false };
+    state = { show: false };
     showNav = () => {
-        this.setState({ showNav: !this.state.showNav });
+        this.setState({ show: !this.state.show });
+    }
+    closeNav=()=>{
+        console.log('on blur')
     }
     render() {
         return (
             <>
                 <nav className="navbar d-flex bg-secondary">
-                    <h1 onClick={this.showNav} className='mr-auto btn-secondary'>≡</h1>
+                    <h1 onClick={this.showNav} onBlur={this.closeNav} className='mr-auto btn-secondary'>≡</h1>
                     <Link className="navbar-brand ml-auto text-light" to="/"><h1>My Contact</h1></Link>
                     
                 </nav>
                 {
-                    (this.state.showNav)
+                    (this.state.show)
                     &&
                     <div className="container-fluid  py-4">
                         <ul className="navbar-nav text-left">

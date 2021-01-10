@@ -17,7 +17,7 @@ class AddContact extends Component {
 
     onSubmit = (e) => {
         e.preventDefault();
-        const { name, email, phone,error } = this.state;
+        const { name, email, phone} = this.state;
         this.setState({
             ...this.state, error: {
                 name: '',
@@ -31,39 +31,31 @@ class AddContact extends Component {
             phone: ''
         }
         if (!name) {
-            console.log("Name err", formError);
-            formError.name="Name is required";
+           // console.log("Name err", formError);
+            formError.name = "Name is required";
         }
         if (!email) {
-            console.log("Email err", formError);
-            formError.email="Email is required";
+           // console.log("Email err", formError);
+            formError.email = "Email is required";
         }
         if (!phone) {
-            console.log("Phone err",formError);
-            formError.phone="Phone is required";
+           // console.log("Phone err", formError);
+            formError.phone = "Phone is required";
         }
 
-        (formError)
-            &&this.setState({...this.state,error:{...this.state.error,...formError}})
-        
-        if(!error.name&&!error.email&&!error.phone){
-            this.props.addContact({name,email,phone});
+        if (formError.name||formError.email||formError.phone) {
+            this.setState({ ...this.state, error: { ...this.state.error, ...formError } })
+        } else {
+            this.props.addContact({ name, email, phone });
             this.props.history.push('/');
         }
-            
-
-        
-
-
-
-
     }
     onChange = (e) => {
         //console.log(e.target.name, e.target.value);
         this.setState({ ...this.state, [e.target.name]: e.target.value });
     }
     render() {
-        const { name, email, phone } = this.state;
+        const { name, email, phone, error } = this.state;
         return (
             <div>
                 <form onSubmit={this.onSubmit}>
@@ -72,6 +64,17 @@ class AddContact extends Component {
                     <SingleInput type='text' name="phone" id='phone' value={phone} onChange={this.onChange} />
                     <button type="submit" className="btn btn-primary">ADD</button>
                 </form>
+                <div>
+                    {
+                        (error) &&
+                        <div className='text-danger'>
+                            <p>{error.name}</p>
+                            <p>{error.email}</p>
+                            <p>{error.phone}</p>
+                        </div>
+
+                    }
+                </div>
             </div>
         )
     }

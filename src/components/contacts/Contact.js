@@ -15,7 +15,6 @@ function Contact(props) {
     
     const onDelete=async (id)=>{
         await props.deleteContact(id);
-        window.location.reload(false);
     }
     const onEditRedirect=(id)=>{
         history.push(`/contact/edit/${id}`);
